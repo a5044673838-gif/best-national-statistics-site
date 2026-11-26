@@ -1,0 +1,213 @@
+/* Japan in Numbers — original design.
+   Palette: deep ink navy, warm paper, vermilion accent (a nod to Japan's
+   red sun, used sparingly), teal-blue for secondary data. System fonts only. */
+
+:root {
+  --ink: #1f2a37;
+  --muted: #6b655c;
+  --paper: #faf8f4;
+  --card: #ffffff;
+  --line: #e6e2dc;
+  --accent: #c0392b;
+  --accent-dark: #9c2b20;
+  --blue: #2f6fb2;
+  --green: #7fb069;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.site-header {
+  background: var(--ink);
+  color: #f4f1ea;
+}
+.header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 22px 20px 8px;
+}
+.brand {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 19px;
+  vertical-align: -6px;
+}
+.tagline { margin: 4px 0 0; color: #c9c2b6; font-size: 14px; }
+
+#nav {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 6px 20px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+}
+#nav a {
+  color: #e8e2d6;
+  text-decoration: none;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 15px;
+}
+#nav a:hover { background: rgba(255, 255, 255, 0.12); }
+#nav a.active { background: var(--accent); color: #fff; font-weight: 600; }
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+}
+
+h1 { font-size: 34px; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 10px; }
+h2 { font-size: 21px; margin: 0 0 6px; letter-spacing: -0.01em; }
+.lede { font-size: 19px; color: #3c4653; max-width: 76ch; margin: 0 0 26px; }
+
+a { color: var(--accent-dark); }
+a:hover { text-decoration-thickness: 2px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(31, 42, 55, 0.06);
+}
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sub { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+.source { color: var(--muted); font-size: 13px; margin: 10px 0 0; }
+.note { font-size: 14px; color: #3c4653; }
+.latest { font-size: 15px; margin: 10px 0 0; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.stat {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.stat-label { font-size: 13px; color: var(--muted); }
+.stat-value { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+.stat-meta { font-size: 13px; color: var(--muted); }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.grid-2 .card { margin-bottom: 0; }
+.grid-2 { margin-bottom: 20px; }
+
+.controls { display: flex; gap: 6px; flex-wrap: wrap; }
+.ctl {
+  font: inherit;
+  font-size: 13px;
+  padding: 6px 11px;
+  border: 1px solid #cfc9bd;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+}
+.ctl:hover { border-color: var(--accent); }
+.ctl[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.ctl.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.ctl.primary:hover { background: var(--accent-dark); }
+
+.chart { width: 100%; }
+.chart svg { display: block; }
+
+.donut-wrap { max-width: 340px; margin: 0 auto; }
+.legend { display: flex; flex-direction: column; gap: 4px; font-size: 14px; margin-top: 6px; }
+.legend-item { display: flex; align-items: center; gap: 8px; }
+.swatch { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+
+.table-wrap { overflow-x: auto; }
+table.data-table { border-collapse: collapse; width: 100%; font-size: 15px; }
+.data-table th, .data-table td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+.data-table thead th { background: #f3efe8; font-size: 13px; }
+.data-table tbody th { font-weight: 600; }
+.data-table th[data-key] { cursor: pointer; }
+.data-table th[data-key]:hover { color: var(--accent-dark); }
+.sort-hint { color: #b9b2a6; font-size: 12px; }
+
+dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 0; }
+dl.facts dt { font-weight: 700; }
+dl.facts dd { margin: 0; }
+.src { color: var(--muted); font-size: 13px; }
+
+.sources ul { margin: 0 0 12px; padding-left: 20px; }
+.sources li { margin-bottom: 6px; font-size: 14px; }
+
+.explorer-bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+.search-label { font-weight: 600; font-size: 15px; }
+.search-label input {
+  font: inherit;
+  font-weight: 400;
+  padding: 8px 12px;
+  border: 1px solid #cfc9bd;
+  border-radius: 8px;
+  width: min(320px, 70vw);
+  margin-left: 6px;
+}
+.count { color: var(--muted); font-size: 14px; }
+.compare-controls { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 10px; }
+.compare-controls label { font-weight: 600; font-size: 15px; }
+.compare-controls select { font: inherit; font-weight: 400; padding: 7px 10px; border: 1px solid #cfc9bd; border-radius: 8px; margin-left: 6px; }
+.chart.second { margin-top: 8px; }
+
+.site-footer {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  h1 { font-size: 27px; }
+  .lede { font-size: 17px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .card { padding: 16px; }
+  .stat-value { font-size: 22px; }
+  #nav a { padding: 6px 10px; font-size: 14px; }
+  dl.facts { grid-template-columns: 1fr; gap: 2px 0; }
+  dl.facts dd { margin-bottom: 8px; }
+  .card-head { flex-direction: column; }
+}
